@@ -1,0 +1,22 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/semi": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx",".ts", ".tsx"] }],
+    "prettier/prettier": ["warn", {}, { "usePrettierrc": true }],
+    "@typescript-eslint/indent":["warn", 2],
+    "@typescript-eslint/comma-dangle":"off"
+  },
+  "plugins": [
+    "@typescript-eslint","prettier", "import"]
+}
