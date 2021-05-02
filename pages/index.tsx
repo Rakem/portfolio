@@ -34,7 +34,7 @@ export default function Home() {
             <h2 className="text-shadow-sm mb-10 text-white text-4xl font-bold sm:text-8xl">
               Curriculum Vitae
             </h2>
-            <CurriculumVitae className="slanted mb-20" />
+            <CurriculumVitae className="sm:slanted mb-20" />
           </Section>
 
           <Section className="flex flex-col">

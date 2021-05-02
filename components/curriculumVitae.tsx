@@ -23,7 +23,7 @@ function CurriculumVitae({ className }: { className?: String }) {
   return (
     <div
       className={clsx(
-        'slanted flex-1 bg-white shadow-inner overflow-hidden',
+        'flex-1 bg-white shadow-inner overflow-hidden',
         className
       )}
     >
