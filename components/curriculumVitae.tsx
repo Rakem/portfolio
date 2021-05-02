@@ -23,12 +23,12 @@ function CurriculumVitae({ className }: { className?: String }) {
   return (
     <div
       className={clsx(
-        'bg-white rounded-md shadow-inner overflow-hidden ',
+        'slanted flex-1 bg-white shadow-inner overflow-hidden',
         className
       )}
     >
       {data.map(({ employer, dates, link }) => (
-        <a href={link} target="_blank" rel="noreferrer">
+        <a href={link} target="_blank" rel="noreferrer" key={employer}>
           <div className="p-5 hover:bg-gray-100 border-b">
             <h4 className="text-xl">{employer}</h4>
             <span>{dates}</span>
