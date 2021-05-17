@@ -26,10 +26,10 @@ function Technologies({ className }: { className?: String }) {
     >
       {data.map(({ icon, label }) => (
         <div
-          className="flex flex-col items-center mb-10 w-1/3 transform hover:scale-110 transition-transform duration-200 sm:w-1/4 lg:w-1/6"
+          className="flex flex-col items-center mb-10 w-1/3 text-white transform hover:scale-110 transition-transform duration-200 sm:w-1/4 lg:w-1/6"
           key={icon}
         >
-          <i className={`devicon-${icon}-plain  text-4xl sm:text-8xl `} />
+          <i className={`devicon-${icon}-plain  text-4xl sm:text-8xl`} />
           <span>{label}</span>
         </div>
       ))}
