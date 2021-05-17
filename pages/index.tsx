@@ -14,7 +14,7 @@ export default function Home() {
       <main className="sm:scroll-container flex flex-col h-screen overflow-y-scroll">
         <div className="bg-gradient-to-b from-white to-teal-600">
           <Section className="flex flex-col h-screen sm:flex-row">
-            <div className="from-seagreen-400 flex-shrink mb-10 text-transparent bg-gradient-to-r bg-clip-text to-denim-400 lg:mb-0">
+            <div className="flex-shrink mb-10 text-transparent bg-gradient-to-r bg-clip-text from-seagreen-400 to-denim-400 lg:mb-0">
               <h1 className="text-5xl font-bold sm:text-6xl lg:text-8xl">
                 Tilman Reipsch
               </h1>

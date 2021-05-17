@@ -1093,11 +1093,6 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
-devicon@^2.11.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/devicon/-/devicon-2.11.0.tgz#63ca168b920a39201d83c45ed15a7d6a1e3ee665"
-  integrity sha512-sQ4rGJK6azpWmoM1viICEhWVuXfTsUYbZU9yBeFlmUziFKLUvD4yAovM4qFrTytcXElLEix5xdRD5gKzwEwRNA==
-
 didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
