@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRef } from 'react'
 import Section from '../components/section'
 import CurriculumVitae from '../components/curriculumVitae'
 import Technologies from '../components/technologies'
@@ -13,7 +14,7 @@ export default function Home() {
       </Head>
       <main className="sm:scroll-container flex flex-col h-screen overflow-y-scroll">
         <div className="bg-gradient-to-b from-white to-teal-100">
-          <Section className="flex flex-col h-screen sm:flex-row">
+          <Section className="flex flex-col h-screen sm:flex-row" arrow>
             <div className="flex-shrink mb-10 text-transparent bg-gradient-to-r bg-clip-text from-seagreen-400 to-denim-400 lg:mb-0">
               <h1 className="text-5xl font-bold sm:text-6xl lg:text-8xl">
                 Tilman Reipsch
@@ -32,7 +33,7 @@ export default function Home() {
           </Section>
         </div>
         <div className="bg-gradient-to-b from-teal-100 to-teal-600">
-          <Section className="flex flex-col">
+          <Section className="flex flex-col" arrow>
             <h2 className="text-shadow-sm mb-10 text-white text-4xl font-bold sm:text-8xl">
               Curriculum Vitae
             </h2>
