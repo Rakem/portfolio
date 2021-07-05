@@ -1,5 +1,5 @@
 import React from 'react'
-import { isPast } from 'date-fns'
+import { isPast, differenceInMilliseconds } from 'date-fns'
 import Confetti from 'react-confetti'
 
 function Blub() {
@@ -16,6 +16,13 @@ function Blub() {
   ]
   const passed = dates.filter((date) => isPast(date))
   const percentage = Math.round((passed.length / dates.length) * 100)
+  const difference = differenceInMilliseconds(dates[0], dates[dates.length - 1])
+  const passedDifference = differenceInMilliseconds(dates[0], new Date())
+  const timePercentage = Math.min(
+    Math.round((passedDifference / difference) * 100),
+    100
+  )
+  console.log(timePercentage)
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-b from-gray-700 to-gray-900">
       {percentage > 99 && (
@@ -27,14 +34,33 @@ function Blub() {
       <div className="mb-10 text-white text-2xl">
         Wie viel hast du schon geschafft?
       </div>
-      <div className="relative w-full max-w-screen-md h-16 bg-white rounded">
+      <div className="relative w-full max-w-screen-md bg-white rounded-t overflow-hidden">
         <div
           style={{ width: `${percentage}%` }}
-          className="h-full bg-gradient-to-r from-seagreen-500 to-seagreen-800"
+          className="h-16 bg-gradient-to-r from-seagreen-500 to-seagreen-800"
         />
         <div className="text-shadow-sm absolute inset-0 flex items-center justify-center text-2xl font-semibold">
           <div>{percentage} %</div>
         </div>
+      </div>
+      <div className="relative w-full max-w-screen-md bg-gray-200 rounded-b overflow-hidden">
+        <div
+          style={{ width: `${timePercentage}%` }}
+          className="h-3 bg-gradient-to-r from-sepia-300 to-sepia-400"
+        />
+        {dates.map((date) => {
+          const dateDifference = differenceInMilliseconds(dates[0], date)
+          const datePercentage = Math.min(
+            Math.round((dateDifference / difference) * 100),
+            100
+          )
+          return (
+            <div
+              className="absolute top-0 -mx-1 w-2 h-full bg-chocolate-500"
+              style={{ left: `${datePercentage}%` }}
+            />
+          )
+        })}
       </div>
     </div>
   )
