@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { isPast, differenceInMilliseconds } from 'date-fns'
 import Confetti from 'react-confetti'
 
@@ -14,15 +14,37 @@ function Blub() {
     new Date(2021, 6, 23, 10),
     new Date(2021, 6, 26, 15),
   ]
-  const passed = dates.filter((date) => isPast(date))
-  const percentage = Math.round((passed.length / dates.length) * 100)
-  const difference = differenceInMilliseconds(dates[0], dates[dates.length - 1])
-  const passedDifference = differenceInMilliseconds(dates[0], new Date())
-  const timePercentage = Math.min(
-    Math.round((passedDifference / difference) * 100),
-    100
+  const calculatePercentage = () => {
+    const passed = dates.filter((date) => isPast(date))
+    return Math.round((passed.length / dates.length) * 100)
+  }
+  const calculateTimePercentage = () => {
+    const difference = differenceInMilliseconds(
+      dates[0],
+      dates[dates.length - 1]
+    )
+    const passedDifference = differenceInMilliseconds(dates[0], new Date())
+    return Math.min(Math.round((passedDifference / difference) * 100), 100)
+  }
+  const calculateDatePercentage = (date) => {
+    const difference = differenceInMilliseconds(
+      dates[0],
+      dates[dates.length - 1]
+    )
+    const dateDifference = differenceInMilliseconds(dates[0], date)
+    return Math.min(Math.round((dateDifference / difference) * 100), 100)
+  }
+  const [percentage, setPercentage] = useState(calculatePercentage())
+  const [timePercentage, setTimePercentage] = useState(
+    calculateTimePercentage()
   )
-  console.log(timePercentage)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPercentage(calculatePercentage())
+      setTimePercentage(calculateTimePercentage())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-b from-gray-700 to-gray-900">
       {percentage > 99 && (
@@ -48,19 +70,13 @@ function Blub() {
           style={{ width: `${timePercentage}%` }}
           className="h-3 bg-gradient-to-r from-sepia-300 to-sepia-400"
         />
-        {dates.map((date) => {
-          const dateDifference = differenceInMilliseconds(dates[0], date)
-          const datePercentage = Math.min(
-            Math.round((dateDifference / difference) * 100),
-            100
-          )
-          return (
-            <div
-              className="absolute top-0 -mx-1 w-2 h-full bg-chocolate-500"
-              style={{ left: `${datePercentage}%` }}
-            />
-          )
-        })}
+        {dates.map((date) => (
+          <div
+            key={date.toISOString()}
+            className="absolute top-0 -mx-1 w-2 h-full bg-chocolate-500"
+            style={{ left: `${calculateDatePercentage(date)}%` }}
+          />
+        ))}
       </div>
     </div>
   )
