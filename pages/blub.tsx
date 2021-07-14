@@ -45,6 +45,8 @@ function Blub() {
     }, 1000)
     return () => clearInterval(interval)
   }, [])
+  const percentageWidth = `${percentage}%`
+  const timeWidth = `${timePercentage}%`
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-b from-gray-700 to-gray-900">
       {percentage > 99 && (
@@ -58,7 +60,7 @@ function Blub() {
       </div>
       <div className="relative w-full max-w-screen-md bg-white rounded-t overflow-hidden">
         <div
-          style={{ width: `${percentage}%` }}
+          style={{ width: percentageWidth }}
           className="h-16 bg-gradient-to-r from-seagreen-500 to-seagreen-800"
         />
         <div className="text-shadow-sm absolute inset-0 flex items-center justify-center text-2xl font-semibold">
@@ -67,7 +69,7 @@ function Blub() {
       </div>
       <div className="relative w-full max-w-screen-md bg-gray-200 rounded-b overflow-hidden">
         <div
-          style={{ width: `${timePercentage}%` }}
+          style={{ width: timeWidth }}
           className="h-3 bg-gradient-to-r from-sepia-300 to-sepia-400"
         />
         {dates.map((date) => (
