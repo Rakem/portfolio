@@ -84,4 +84,11 @@ function Blub() {
   )
 }
 
+
+export const getServerSideProps = async (context) => {
+  return {
+    props: {date:new Date()}
+  };
+}
+
 export default Blub
