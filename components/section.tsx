@@ -13,7 +13,7 @@ function Section({
   return (
     <section
       className={clsx(
-        'sm:scroll-child relative mx-auto px-8 py-32 max-w-screen-xl min-h-screen sm:px-12',
+        'sm:scroll-child relative mx-auto px-8 py-12 max-w-screen-xl min-h-screen sm:px-12 sm:py-32',
         className
       )}
     >
