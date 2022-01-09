@@ -24,7 +24,7 @@ const data = [
   },
 ]
 
-function CurriculumVitae({ className }: { className?: String }) {
+function CurriculumVitae({ className = '' }: { className?: String }) {
   return (
     <div className={clsx('flex-1 shadow-inner overflow-hidden', className)}>
       <h2 className="p-8 text-2xl font-bold sm:p-12 sm:text-5xl">

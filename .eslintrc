@@ -4,12 +4,14 @@
     "project": "./tsconfig.json"
   },
   "extends": [
+    "plugin:@next/next/recommended",
     "airbnb-typescript",
     "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/semi": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx",".ts", ".tsx"] }],

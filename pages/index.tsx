@@ -1,8 +1,10 @@
 import Head from 'next/head'
 
+import Image from 'next/image'
 import Section from '../components/section'
 import CurriculumVitae from '../components/curriculumVitae'
 import Technologies from '../components/technologies'
+import me from '../public/tilman.jpg'
 
 export default function Home() {
   return (
@@ -17,11 +19,13 @@ export default function Home() {
           <Section className="flex flex-col items-center sm:flex-row" arrow>
             <div className="z-10 sm:w-1/2">
               <div className="flex flex-row -mb-3 -ml-4 mr-3 max-w-screen-sm max-h-96 bg-teal-700 rounded-3xl overflow-hidden ring-teal-600 ring-1 sm:-mr-10 sm:mb-0 sm:ml-0">
-                <div className="flex-1 overflow-hidden">
-                  <img
-                    src="/tilman.jpg"
+                <div className="relative flex-1 overflow-hidden">
+                  <Image
+                    src={me}
                     alt="me"
-                    className="w-full h-full object-cover transform hover:scale-110 transition transition-transform duration-300"
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-full transform hover:scale-110 transition transition-transform duration-300"
                   />
                 </div>
                 <div className="flex-1 mb-10 p-4 text-transparent bg-gradient-to-r bg-clip-text from-teal-100 to-teal-400 sm:p-10 lg:mb-0">
