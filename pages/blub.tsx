@@ -4,13 +4,13 @@ import Confetti from 'react-confetti'
 
 function Blub() {
   const dates = [
-    new Date(2022, 2, 2, 15),
-    new Date(2022, 2, 7, 8, 30),
-    new Date(2022, 2, 9, 14),
-    new Date(2022, 2, 11, 15),
-    new Date(2022, 2, 14, 13, 30),
-    new Date(2022, 2, 16, 7, 30),
-    new Date(2022, 2, 18, 8),
+    new Date(2022, 1, 2, 15),
+    new Date(2022, 1, 7, 8, 30),
+    new Date(2022, 1, 9, 14),
+    new Date(2022, 1, 11, 15),
+    new Date(2022, 1, 14, 13, 30),
+    new Date(2022, 1, 16, 7, 30),
+    new Date(2022, 1, 18, 8),
   ]
   const calculatePercentage = () => {
     const passed = dates.filter((date) => isPast(date))
@@ -83,7 +83,7 @@ function Blub() {
 }
 
 export const getServerSideProps = async () => ({
-  props: { date: new Date() },
+  props: { date: new Date().toString() },
 })
 
 export default Blub
