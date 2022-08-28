@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Simulate } from 'react-dom/test-utils'
 import clsx from 'clsx'
 import Timeout = NodeJS.Timeout
-import load = Simulate.load
 
 const scales = [
   { key: 'C', modifiers: ['#'] },
