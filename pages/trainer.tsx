@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Simulate } from 'react-dom/test-utils'
+import clsx from 'clsx'
 import Timeout = NodeJS.Timeout
+import load = Simulate.load
 
 const scales = [
   { key: 'C', modifiers: ['#'] },
@@ -14,11 +17,13 @@ const types = ['maj', 'm', '']
 
 const randomInt = (max) => Math.floor(Math.random() * max)
 function Trainer() {
-  const [scale, setScale] = useState<string>()
+  const [scale, setScale] = useState<string>('C')
   const [modifier, setModifier] = useState<string>()
   const [type, setType] = useState<string>()
   const [frequency, setFrequency] = useState(2)
+  const [big, setBig] = useState(true)
   const loadNext = () => {
+    setBig(true)
     const nextScaleIndex = randomInt(scales.length)
     const nextScale = scales[nextScaleIndex]
     const nextModifierIndex = randomInt(nextScale.modifiers.length + 1)
@@ -27,6 +32,7 @@ function Trainer() {
     setScale(nextScale.key)
     setModifier(nextScale.modifiers[nextModifierIndex] ?? '')
     setType(types[nextTypeIndex])
+    setTimeout(() => setBig(false), 1)
   }
   useEffect(() => {
     let interval: Timeout = null
@@ -38,15 +44,28 @@ function Trainer() {
     }
   }, [frequency])
   return (
-    <div className="h-100vh flex flex-col items-center justify-center mt-32">
-      <h1 className="text-seagreen-900 text-8xl">
-        <span className="font-bold">{scale}</span>
-        {modifier}
-        {(modifier || type) && ' '}
-        {type}
-        <sup className="">7</sup>
-      </h1>
-      <div className="flex flex-col items-center mt-32 p-16 bg-white rounded shadow-md">
+    <div className="h-100vh mt-32 flex flex-col items-center justify-center">
+      <div className="relative h-32 w-96">
+        <div
+          style={
+            !big ? { transitionDuration: `${frequency * 1000 - 100}ms` } : {}
+          }
+          className={clsx(
+            'absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-200 opacity-50 ',
+            !big && 'scale-[0.1] transition-all ease-linear'
+          )}
+        />
+        <div className="absolute left-1/2  top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
+          <h1 className=" white block whitespace-nowrap text-8xl text-seagreen-900">
+            <span className="font-bold">{scale}</span>
+            {modifier}
+            {(modifier || type) && ' '}
+            {type}
+            <sup className="">7</sup>
+          </h1>
+        </div>
+      </div>
+      <div className="mt-32 flex flex-col items-center rounded bg-white p-16 shadow-md">
         <span className="mb-6 text-xl">{frequency}s</span>
         <input
           type="range"
@@ -59,7 +78,7 @@ function Trainer() {
         <button
           onClick={() => loadNext()}
           type="button"
-          className="mt-8 px-16 py-8 text-seagreen-800 text-2xl font-bold bg-seagreen-100 rounded"
+          className="mt-8 rounded bg-seagreen-100 px-16 py-8 text-2xl font-bold text-seagreen-800"
         >
           next
         </button>
